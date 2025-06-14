@@ -7,9 +7,19 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(domain_bridge REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+add_executable(bridge src/bridge.cpp)
+ament_target_dependencies(bridge rclcpp domain_bridge)
+
+install(TARGETS
+  bridge
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 install(
   DIRECTORY launch sdf meshes

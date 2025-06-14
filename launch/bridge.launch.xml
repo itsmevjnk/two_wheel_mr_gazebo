@@ -1,0 +1,9 @@
+<launch>
+    <arg name="namespace"/>
+    <arg name="domain"/>
+
+    <executable
+        name="two_wheels_mr_$(var namespace)_domain_bridge"
+        cmd="$(exec-in-pkg bridge two_wheel_mr_gazebo) --to $(var domain) --namespace $(var namespace)"
+        output="screen"/>
+</launch>
